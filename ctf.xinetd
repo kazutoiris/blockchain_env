@@ -1,0 +1,17 @@
+service ctf
+{
+        disable = no
+        flags           = REUSE
+        type            = UNLISTED
+        per_source      = 5
+        port            = 9999
+        protocol        = tcp
+        socket_type     = stream
+        wait            = no
+        user            = root
+        server          = /usr/bin/python3
+        server_args     = /root/ethbot/ethbot.py
+        log_on_failure  += USERID
+        rlimit_cpu	    = 20 # the maximum number of CPU seconds that the service may use
+        rlimit_as      = 1024M # the Address Space resource limit for the service
+}
